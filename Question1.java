@@ -7,39 +7,31 @@ package com.mycompany.question1;
 
 public class Question1 {
 
-    public static void main(String[] args) {
-      int[][] TheAmounts = {
-            {1000, 2000, 3000},
-            {2000, 3000, 4000}, 
-            {1500, 1100, 1200}  
-        };
-        
-        String[] TheCity = {"Cape Town    ", "Port Elizabeth ", "Pretoria       "};
-        String[] monthAndTotal = {"", "PS5", "XBOX", "SWITCH"};
+        int[][] performanceMatrix = {
+    {1000, 2000, 3000},
+    {2000, 3000, 4000}, 
+    {1500, 1100, 1200}  
+};
 
-        Electronics report = new Electronics(3, 3, 3);
-        report.setElectronics(TheCity);
+String[] regionsList = {"Cape Town    ", "Port Elizabeth ", "Pretoria       "};
+String[] headersAndProducts = {"", "PS5", "XBOX", "SWITCH"};
 
-        System.out.println("------------------------------------------------------------------------");
-        System.out.println("GAMING CONSOLE REPORT");
-        System.out.println("------------------------------------------------------------------------");
-        
-        
-        for (String m : monthAndTotal) {
-            System.out.print(m + (m.isEmpty() ? "\t\t" : "\t\t"));
-        }
-        System.out.println();
-        System.out.println("-----------------------------------------------------------------------------");
+Electronics reportGenerator = new Electronics(3, 3, 3);
+reportGenerator.setModelNames(regionsList);
 
-      
-        report.display(TheAmounts);
-        System.out.println("-----------------------------------------------------------------------------");
-        
-        System.out.println("CONSOLE SALES TOTALS FOR EACH CITY");
-        System.out.println("------------------------------------------------------------------------------");
-        
+System.out.println("------------------------------------------------------------------------");
+System.out.println("GAMING CONSOLE REPORT");
 
-        report.displayCityTotals(TheAmounts);
-        report.displayCityWithMostSales(TheAmounts);
-    }
+for (String label : headersAndProducts) {
+    System.out.print(label + (label.isEmpty() ? "\t\t" : "\t\t"));
+}
+
+
+reportGenerator.printInventoryGrid(performanceMatrix);;
+
+System.out.println("CONSOLE SALES TOTALS FOR EACH CITY");
+System.out.println("------------------------------------------------------------------------------");
+
+reportGenerator.printItemSums(performanceMatrix);
+reportGenerator.findHighestSellingItem(performanceMatrix);
 }
