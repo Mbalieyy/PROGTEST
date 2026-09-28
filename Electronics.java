@@ -6,77 +6,69 @@ package com.mycompany.question1;
 
 
 public class Electronics {
-    private int[][] amount;
-    private String[] electronics;
+ private int[][] salesData; 
+private String[] modelNames; 
 
-    public Electronics(int row, int column, int indexPhone) {
-        this.amount = new int[row][column];
-        this.electronics = new String[indexPhone];
-    }
+public Electronics(int totalRows, int totalColumns, int modelCount) { 
+    this.salesData = new int[totalRows][totalColumns]; 
+    this.modelNames = new String[modelCount]; 
+} 
 
-    public String[] getElectronics() {
-        return electronics;
-    }
+public String[] getModelNames() { 
+    return modelNames; 
+} 
 
-    public void setElectronics(String[] phones) {
-        this.electronics = phones;
-    }
+public void setModelNames(String[] updatedModels) { 
+    this.modelNames = updatedModels; 
+} 
 
-    public void display(int[][] arr) {
-        for (int i = 0; i < arr.length; i++) {
-           
-            System.out.print(electronics[i] + (electronics[i].length() < 12 ? "\t\t" : "\t"));
-            
-            for (int j = 0; j < arr[i].length; j++) {
-                System.out.print(arr[i][j] + "\t\t");
-            }
-            System.out.println();
-        }
-    }
+public void printInventoryGrid(int[][] grid) { 
+    for (int r = 0; r < grid.length; r++) { 
+        System.out.print(modelNames[r] + (modelNames[r].length() < 12 ? "\t\t" : "\t")); 
+        for (int c = 0; c < grid[r].length; c++) { 
+            System.out.print(grid[r][c] + "\t\t"); 
+        } 
+        System.out.println(); 
+    } 
+} 
 
-    
-    public void calculateTotalMonth(int[][] arr) {
-        System.out.print("Total\t\t");
-        for (int i = 0; i < arr[0].length; i++) { 
-            int total = 0;
-            for (int j = 0; j < arr.length; j++) { 
-                total += arr[j][i];
-            }
-//            System.out.print(total + "\t\t");
-        }
-        System.out.println();
-    }
+public void computeMonthlySummaries(int[][] dataMatrix) { 
+    System.out.print("Total\t\t"); 
+    for (int c = 0; c < dataMatrix[0].length; c++) { 
+        int columnSum = 0; 
+        for (int r = 0; r < dataMatrix.length; r++) { 
+            columnSum += dataMatrix[r][c]; 
+        } 
+      
+    } 
+    System.out.println(); 
+} 
 
-    public void displayCityTotals(int[][] arr) {
-        
-        
-        for (int i = 0; i < arr.length; i++) {
-            int totalVille = 0;
-            for (int j = 0; j < arr[i].length; j++) {
-                totalVille += arr[i][j]; 
-            }
-            System.out.println(electronics[i] + (electronics[i].length() < 12 ? "\t\t\t" : "\t\t") + totalVille);
-        }
-    }
-    public void displayCityWithMostSales(int[][] arr) {
-    int maxSales = -1;
-    String topCity = "";
+public void printItemSums(int[][] summaryGrid) { 
+    for (int r = 0; r < summaryGrid.length; r++) { 
+        int categoryTotal = 0; 
+        for (int c = 0; c < summaryGrid[r].length; c++) { 
+            categoryTotal += summaryGrid[r][c]; 
+        } 
+        System.out.println(modelNames[r] + (modelNames[r].length() < 12 ? "\t\t\t" : "\t\t") + categoryTotal); 
+    } 
+} 
 
-    for (int i = 0; i < arr.length; i++) {
-        int totalVille = 0;
-        for (int j = 0; j < arr[i].length; j++) {
-            totalVille += arr[i][j];
-        }
-        
-        
-        if (totalVille > maxSales) {
-            maxSales = totalVille;
-            topCity = electronics[i];
-        }
-    }
-        System.out.println();
-    System.out.println("city most sales : " + topCity);
-}
+public void findHighestSellingItem(int[][] recordTable) { 
+    int highestVolume = -1; 
+    String leadingItem = ""; 
+    for (int r = 0; r < recordTable.length; r++) { 
+        int recordTotal = 0; 
+        for (int c = 0; c < recordTable[r].length; c++) { 
+            recordTotal += recordTable[r][c]; 
+        } 
+        if (recordTotal > highestVolume) { 
+            highestVolume = recordTotal; 
+            leadingItem = modelNames[r]; 
+        } 
+    } 
+    System.out.println(); 
+    System.out.println("city most sales : " + leadingItem); 
 }
     
     
